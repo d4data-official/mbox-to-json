@@ -1,0 +1,31 @@
+{
+  "name": "mbox-to-json",
+  "version": "1.0.0",
+  "description": "Convert Mbox to Json",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Maastrich/mbox-to-json.git",
+  "author": "Maastrich",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "node": "^15.3.0",
+    "path": "^0.12.7",
+    "readline": "^1.3.0",
+    "stringify-object": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "@types/stringify-object": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "typedoc": "^0.19.2",
+    "typescript": "^4.1.2"
+  }
+}
