@@ -49,12 +49,13 @@ var mbox_reader_1 = require("mbox-reader");
 function parseMbox(stream) {
     var e_1, _a;
     return __awaiter(this, void 0, void 0, function () {
-        var messages, _b, _c, message, _d, _e, e_1_1;
+        var messages, count, _b, _c, message, _d, _e, e_1_1;
         return __generator(this, function (_f) {
             switch (_f.label) {
                 case 0:
-                    console.log('parsing mbox');
+                    console.log('Start parsing mbox');
                     messages = [];
+                    count = 0;
                     _f.label = 1;
                 case 1:
                     _f.trys.push([1, 7, 8, 13]);
@@ -64,6 +65,8 @@ function parseMbox(stream) {
                 case 3:
                     if (!(_c = _f.sent(), !_c.done)) return [3 /*break*/, 6];
                     message = _c.value;
+                    count++;
+                    console.log(count);
                     _e = (_d = messages).push;
                     return [4 /*yield*/, mailparser_1.simpleParser(message.content)];
                 case 4:
@@ -88,7 +91,7 @@ function parseMbox(stream) {
                     return [7 /*endfinally*/];
                 case 12: return [7 /*endfinally*/];
                 case 13:
-                    console.log(messages);
+                    console.log('End parsing mbox');
                     return [2 /*return*/, (messages)];
             }
         });
