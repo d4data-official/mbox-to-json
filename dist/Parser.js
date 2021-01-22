@@ -86,7 +86,9 @@ function parseMbox(stream) {
                     if (e_1) throw e_1.error;
                     return [7 /*endfinally*/];
                 case 12: return [7 /*endfinally*/];
-                case 13: return [2 /*return*/, (messages)];
+                case 13:
+                    console.log(messages);
+                    return [2 /*return*/, (messages)];
             }
         });
     });
