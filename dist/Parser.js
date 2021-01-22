@@ -42,55 +42,56 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseMbox = void 0;
 var mailparser_1 = require("mailparser");
 var mbox_reader_1 = require("mbox-reader");
+var humanize_duration_1 = __importDefault(require("humanize-duration"));
 function parseMbox(stream) {
     var e_1, _a;
     return __awaiter(this, void 0, void 0, function () {
-        var start, messages, count, _b, _c, message, _d, _e, e_1_1;
-        return __generator(this, function (_f) {
-            switch (_f.label) {
+        var start, messages, count, _b, _c, message, e_1_1;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
                     start = Date.now();
                     messages = [];
                     count = 0;
-                    _f.label = 1;
+                    _d.label = 1;
                 case 1:
-                    _f.trys.push([1, 7, 8, 13]);
+                    _d.trys.push([1, 6, 7, 12]);
                     _b = __asyncValues(mbox_reader_1.mboxReader(stream));
-                    _f.label = 2;
+                    _d.label = 2;
                 case 2: return [4 /*yield*/, _b.next()];
                 case 3:
-                    if (!(_c = _f.sent(), !_c.done)) return [3 /*break*/, 6];
+                    if (!(_c = _d.sent(), !_c.done)) return [3 /*break*/, 5];
                     message = _c.value;
                     count++;
-                    _e = (_d = messages).push;
-                    return [4 /*yield*/, mailparser_1.simpleParser(message.content)];
-                case 4:
-                    _e.apply(_d, [_f.sent()]);
-                    _f.label = 5;
-                case 5: return [3 /*break*/, 2];
-                case 6: return [3 /*break*/, 13];
-                case 7:
-                    e_1_1 = _f.sent();
+                    messages.push(mailparser_1.simpleParser(message.content));
+                    _d.label = 4;
+                case 4: return [3 /*break*/, 2];
+                case 5: return [3 /*break*/, 12];
+                case 6:
+                    e_1_1 = _d.sent();
                     e_1 = { error: e_1_1 };
-                    return [3 /*break*/, 13];
-                case 8:
-                    _f.trys.push([8, , 11, 12]);
-                    if (!(_c && !_c.done && (_a = _b.return))) return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
+                case 7:
+                    _d.trys.push([7, , 10, 11]);
+                    if (!(_c && !_c.done && (_a = _b.return))) return [3 /*break*/, 9];
                     return [4 /*yield*/, _a.call(_b)];
-                case 9:
-                    _f.sent();
-                    _f.label = 10;
-                case 10: return [3 /*break*/, 12];
-                case 11:
+                case 8:
+                    _d.sent();
+                    _d.label = 9;
+                case 9: return [3 /*break*/, 11];
+                case 10:
                     if (e_1) throw e_1.error;
                     return [7 /*endfinally*/];
-                case 12: return [7 /*endfinally*/];
-                case 13:
-                    console.log('%s messages processed in %s seconds', count, (Date.now() - start) / 1000);
+                case 11: return [7 /*endfinally*/];
+                case 12:
+                    console.log('%s mail processed in %s', count, humanize_duration_1.default((Date.now() - start)));
                     return [2 /*return*/, (messages)];
             }
         });
