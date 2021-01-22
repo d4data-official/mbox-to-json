@@ -42,24 +42,30 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseMbox = void 0;
 var mailparser_1 = require("mailparser");
 var mbox_reader_1 = require("mbox-reader");
-var humanize_duration_1 = __importDefault(require("humanize-duration"));
-function parseMbox(stream) {
+/**
+ *
+ *
+ * @param {Stream} stream
+ * @description stream to the mbox file
+ *
+ * @param {(number | undefined)} [pageSize=undefined]
+ * @description if pageSize is set and > 0 the function return an array of array of size {pageSize} containing Promise that resolve mails datas as Parsed Mail. Otherwise it return an Array of the same kind of Promise
+ *
+ * @return {(Promise<Promise<ParsedMail>[][] | Promise<ParsedMail>[]>)}
+ */
+function parseMbox(stream, pageSize) {
     var e_1, _a;
+    if (pageSize === void 0) { pageSize = undefined; }
     return __awaiter(this, void 0, void 0, function () {
-        var start, messages, count, _b, _c, message, e_1_1;
+        var messages, _b, _c, message, e_1_1;
         return __generator(this, function (_d) {
             switch (_d.label) {
                 case 0:
-                    start = Date.now();
                     messages = [];
-                    count = 0;
                     _d.label = 1;
                 case 1:
                     _d.trys.push([1, 6, 7, 12]);
@@ -69,7 +75,6 @@ function parseMbox(stream) {
                 case 3:
                     if (!(_c = _d.sent(), !_c.done)) return [3 /*break*/, 5];
                     message = _c.value;
-                    count++;
                     messages.push(mailparser_1.simpleParser(message.content));
                     _d.label = 4;
                 case 4: return [3 /*break*/, 2];
@@ -91,7 +96,14 @@ function parseMbox(stream) {
                     return [7 /*endfinally*/];
                 case 11: return [7 /*endfinally*/];
                 case 12:
-                    console.log('%s mail processed in %s', count, humanize_duration_1.default((Date.now() - start)));
+                    if (pageSize && pageSize > 0) {
+                        return [2 /*return*/, (messages.reduce(function (acc, val, i) {
+                                var idx = Math.floor(i / pageSize);
+                                var page = acc[idx] || (acc[idx] = []);
+                                page.push(val);
+                                return acc;
+                            }, []))];
+                    }
                     return [2 /*return*/, (messages)];
             }
         });
