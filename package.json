@@ -1,6 +1,6 @@
 {
   "name": "mbox-to-json",
-  "version": "1.0.8",
+  "version": "1.2.0",
   "description": "Convert Mbox to Json",
   "main": "dist/index.js",
   "repository": "https://github.com/Maastrich/mbox-to-json.git",
