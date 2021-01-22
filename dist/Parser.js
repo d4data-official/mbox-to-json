@@ -53,6 +53,7 @@ function parseMbox(stream) {
         return __generator(this, function (_f) {
             switch (_f.label) {
                 case 0:
+                    console.log('parsing mbox');
                     messages = [];
                     _f.label = 1;
                 case 1:
