@@ -9,6 +9,7 @@
   "private": false,
   "dependencies": {
     "@types/mailparser": "^3.0.0",
+    "humanize-duration": "^3.25.1",
     "mailparser": "^3.0.1",
     "mbox-reader": "^1.1.5",
     "node": "^15.3.0"
