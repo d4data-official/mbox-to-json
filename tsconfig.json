@@ -4,9 +4,7 @@
 		"target": "es5",
 		"module": "commonjs",
 		"sourceMap": true,
-		"outDir": "dist",
 		"strict": true,
-		"declaration": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
@@ -14,7 +12,7 @@
 		"forceConsistentCasingInFileNames": true
 	},
 	"include": [
-		"**/*"
+		"src/*"
 	],
 	"exclude": [
 		"dist"
