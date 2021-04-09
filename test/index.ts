@@ -5,15 +5,15 @@ import { mboxParser } from '../src/Parser';
 async function test(absolutePath: string) {
   let stream = createReadStream(absolutePath);
   return await mboxParser(stream, {
-    pageNumber: 73,
-    pageSize: 100
+    pageNumber: 100,
+    pageSize: 73
   });
 }
 
 test(path.resolve(process.argv[2]))
   .then((mails) => {
-    console.log(mails.length);
+    console.log(mails);
   })
   .catch(e => {
-    console.error(e);
+    console.error(e.message);
   });

@@ -10,14 +10,6 @@ yarn add mbox-to-json
 npm install mbox-to-json
 ```
 
-If you are using typescript please run
-
-```sh
-yarn add -D @types/mbox-to-json
-# or
-npm install @types/mbox-to-json --save-dev
-```
-
 ## Example 1:
 
 Get all mails in a mbox file

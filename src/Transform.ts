@@ -22,7 +22,9 @@ export default class MboxTransformer extends Transform {
   _transform(chunk: Buffer, encoding: string, callback: TransformCallback) {
     const data = `${this.remaining}${chunk.toString()}`;
     this.remaining = '';
-    const mails = data.split(/^From /m).map((mail) => `From ${mail}`);
+    const mails = data.split(/^From /m).filter((mail) => mail.length).map((mail) => {
+      return `From ${mail}`
+    });
     this.remaining = mails.pop() ?? '';
     this.mails.push(...mails);
     if (this.opts?.paginationOption) {
@@ -30,7 +32,6 @@ export default class MboxTransformer extends Transform {
         this.pageNumber! -= 1;
         if (this.pageNumber! === 0) {
           this.emit('data', this.mails.splice(0, this.pageSize));
-          console.log('close');
           this.emit('close');
         } else {
           this.mails.splice(0, this.pageSize);
