@@ -1,7 +1,6 @@
-import { ReadStream } from 'fs';
 import { ParsedMail, simpleParser } from 'mailparser';
-import HumanizeDuration from 'humanize-duration';
 import MboxTransformer from './Transform';
+import { Readable } from 'stream';
 
 export interface MboxParserOptions {
   pageNumber: number
@@ -12,7 +11,7 @@ export {
   ParsedMail
 }
 
-export default async function mboxParser(stream: ReadStream, options?: MboxParserOptions): Promise<Array<ParsedMail>> {
+export default async function mboxParser(stream: Readable, options?: MboxParserOptions): Promise<Array<ParsedMail>> {
   return new Promise<Array<ParsedMail>>((resolve, reject) => {
     let mails: Promise<Array<ParsedMail>>;
     const transform = new MboxTransformer({ paginationOption: options });

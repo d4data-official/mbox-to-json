@@ -5,7 +5,7 @@ import { mboxParser } from '../src/Parser';
 async function test(absolutePath: string) {
   let stream = createReadStream(absolutePath);
   return await mboxParser(stream, {
-    pageNumber: 100,
+    pageNumber: 1,
     pageSize: 73
   });
 }

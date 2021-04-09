@@ -8,6 +8,7 @@
   "author": "Maastrich",
   "license": "MIT",
   "scripts": {
+    "prepublish": "yarn build",
     "build:js": "tsc --project ./tsconfig.dist.json",
     "build:ts": "tsc --project ./tsconfig.types.json",
     "build": "yarn build:js && yarn build:ts",
@@ -17,12 +18,7 @@
   "dependencies": {
     "@types/mailparser": "^3.0.0",
     "humanize-duration": "^3.25.1",
-    "mailparser": "^3.0.1",
-    "mbox-reader": "^1.1.5",
-    "mbox-stream": "^3.0.0",
-    "node": "^15.3.0",
-    "node-mbox": "^1.0.0",
-    "stream-skip": "^1.0.3"
+    "mailparser": "^3.0.1"
   },
   "devDependencies": {
     "@types/humanize-duration": "^3.18.1",
