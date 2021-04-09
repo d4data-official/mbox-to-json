@@ -1,13 +1,13 @@
-# Mbox To Json
+# Mbox Parser
 
-mbox-to-json is a really simple package to transform mbox files to json.
+mbox-tparser is a really simple package to transform mbox files to js object.
 
 ## Instalation
 
 ```sh
-yarn add mbox-to-json
+yarn add mbox-parser
 # or
-npm install mbox-to-json
+npm install mbox-parser
 ```
 
 ## Example 1:
@@ -15,7 +15,7 @@ npm install mbox-to-json
 Get all mails in a mbox file
 
 ```typescript
-import { mboxParser } from "../src/Parser";
+import { mboxParser } from "mbox-parser";
 
 // here stream is a ReadStream to your mbox file
 mboxParser(stream).then((mails) => {
@@ -30,7 +30,7 @@ Get a specific page of a specific size in your mbox file
 > First page is at number 1
 
 ```typescript
-import { mboxParser } from "../src/Parser";
+import { mboxParser } from "mbox-parser";
 
 // here stream is a ReadStream to your mbox file
 mboxParser(stream, {

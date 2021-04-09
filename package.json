@@ -1,7 +1,7 @@
 {
   "name": "mbox-parser",
-  "version": "2.1.0",
-  "description": "Convert Mbox to Json",
+  "version": "1.0.0",
+  "description": "Convert Mbox to js object",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
   "repository": "https://github.com/Maastrich/mbox-to-json.git",
