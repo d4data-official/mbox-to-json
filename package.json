@@ -1,5 +1,5 @@
 {
-  "name": "jsify-mbox",
+  "name": "mbox-parser",
   "version": "2.1.0",
   "description": "Convert Mbox to Json",
   "main": "dist/index.js",
