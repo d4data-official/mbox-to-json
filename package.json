@@ -1,5 +1,5 @@
 {
-  "name": "mbox-parser",
+  "name": "@d4data/mbox-parser",
   "version": "1.0.0",
   "description": "Convert Mbox to js object",
   "main": "dist/index.js",
